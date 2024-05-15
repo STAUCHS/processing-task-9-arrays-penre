@@ -5,6 +5,7 @@ public class Sketch extends PApplet {
   float [] snowX = new float [30];
   float [] snowY = new float [30];  
   int snowDiameter = 30;
+  int playerSize = 20;
   float circleX = 200;
   float circleY = 350;
   float livesX = 270;
@@ -61,13 +62,20 @@ public class Sketch extends PApplet {
       if (snowY[i] > height){
         snowY[i] = -10;
       }
+
+      //collision FINISH LIVES THINGS
+      if (dist(snowX[i], snowY[i], circleX, circleY) < snowDiameter / 2 + playerSize / 2 ){
+        snowY[i] = 0;
+        
+        
+      }
     }
   }
 
   //player circle
   public void player(){
     fill(0, 0, 255);
-    ellipse(circleX, circleY, 20, 20);
+    circle(circleX, circleY, playerSize);
     if (keyPressed){
       if (key == 'w'){
         circleY -= 2;
@@ -84,11 +92,17 @@ public class Sketch extends PApplet {
     }
   }
 
-  //lives
+  //lives DO THIS AFTER 
   public void lives(){
-    fill (255, 0, 0);
-    ellipse (livesX, livesY, 40, 40);
+    for (int i = 0; i < 4; i++){
+      fill (255, 0, 0);
+      rect (livesX, livesY, 40, 40);
+    }
+    
+ 
   }
+  
+  
 
 }    
   
