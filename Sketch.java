@@ -42,8 +42,8 @@ public class Sketch extends PApplet {
 
       //lives
       for (int i = 1; i <= intLives; i++){
-        fill (255, 0, 0);
-        rect(width - i * 50, height - 400, 40, 40);
+        fill(255, 0, 0);
+        rect (width - i * 50, height - 400, 40, 40);
       }
 
       //draw player
@@ -51,31 +51,31 @@ public class Sketch extends PApplet {
     }
   }
     
-  //snow
   public void snow(){
-    fill(255);
+    fill (255);
     for (int i = 0; i < snowX.length; i++){
-
-       //reset snowflakes
-       if (snowY[i] > height){
+      //reset snowflakes
+      if (snowY[i] > height){
         snowY[i] = -10;
       }
-      if(!ballHideStatus[i]){
-       circle(snowX[i], snowY[i], snowDiameter);
+
+      //clicking snow to clear
+      if (!ballHideStatus[i]){
+        circle(snowX[i], snowY[i], snowDiameter);
 
         //collision with player
         if (dist(snowX[i], snowY[i], circleX, circleY) < snowDiameter / 2 + playerSize / 2 ){
           snowY[i] = 0;
           intLives --;
-          if (intLives <=0) {
-          }
         }
+
         // mouse clicks
         if (mousePressed){
-          if(dist(mouseX, mouseY, snowX[i], snowY[i]) < snowDiameter){
+          if (dist(mouseX, mouseY, snowX[i], snowY[i]) < snowDiameter){
             ballHideStatus[i] = true;
           }
         }
+
         //controls speed of snow
         if (keyCode == UP){
           snowY[i] -= 1;
@@ -90,7 +90,7 @@ public class Sketch extends PApplet {
     }
   }
 
-  //player circle
+  //player circle moving around
   public void player(){
     fill(0, 0, 255);
     circle(circleX, circleY, playerSize);
