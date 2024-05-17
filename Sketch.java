@@ -20,8 +20,9 @@ public class Sketch extends PApplet {
 
   public void setup() {
     background(0);
+    
+    //generate random x and y values for snowflakes
     for (int i = 0; i < snowX.length; i++){
-      //generate random x and y values for snowflakes
       snowX[i] = random(width);
       snowY[i] = random(height);
       ballHideStatus[i] = false;
@@ -50,7 +51,10 @@ public class Sketch extends PApplet {
       player();
     }
   }
-    
+  /**
+   * snow falling, mouse clicking to delete snow, fast/slow snow.
+   * @author Peter zhang
+   */
   public void snow(){
     fill (255);
     for (int i = 0; i < snowX.length; i++){
@@ -90,7 +94,10 @@ public class Sketch extends PApplet {
     }
   }
 
-  //player circle moving around
+  /**
+   * movable player circle
+   * @author Peter zhang
+   */
   public void player(){
     fill(0, 0, 255);
     circle(circleX, circleY, playerSize);
