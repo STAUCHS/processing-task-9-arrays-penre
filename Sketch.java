@@ -82,7 +82,7 @@ public class Sketch extends PApplet {
 
         //controls speed of snow
         if (keyCode == UP){
-          snowY[i] -= 1;
+          snowY[i] += 0.5;
         } 
         else if (keyCode == DOWN){
           snowY[i] += 10;
